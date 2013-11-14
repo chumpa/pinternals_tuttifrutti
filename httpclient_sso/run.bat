@@ -1,0 +1,1 @@
+@java -cp ./bin HSTest http://sap login password

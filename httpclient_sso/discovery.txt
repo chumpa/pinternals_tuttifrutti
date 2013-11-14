@@ -1,0 +1,12 @@
+﻿System SAP PI 7.31 sp6
+
+login to /useradmin:	response code 302, redirect to /useradmin/userAdminServlet
+login to /useradmin/userAdminServlet:	response code 500, redirect to http://sap:50600/webdynpro/dispatcher/sap.com/tc~sec~ume~wd~umeadmin/UmeAdminApp
+
+login to http://sap:50600/webdynpro/dispatcher/sap.com/tc~sec~ume~wd~umeadmin/UmeAdminApp: rc=500, no good fields
+
+
+Let's see to SO:
+Java - Login to a website that is using form-based authentication
+http://stackoverflow.com/questions/5748789/java-login-to-a-website-that-is-using-form-based-authentication
+

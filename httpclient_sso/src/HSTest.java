@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 
+
 class Client {
 	URL u;
 	String uname, passwd, htCookie, htHost, htUA;
@@ -18,6 +19,9 @@ class Client {
 		HttpURLConnection huc = (HttpURLConnection)u.openConnection();
 		huc.setInstanceFollowRedirects(true);
 		huc.setRequestProperty("User-Agent", "Mozilla 5.0");
+		
+		
+		
 		
 		String s = readHttpURLConnection(huc);
 		System.out.println(u.toString() + " " + huc.getResponseCode() + " " + huc.getResponseMessage());

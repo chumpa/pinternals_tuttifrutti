@@ -10,3 +10,12 @@ Let's see to SO:
 Java - Login to a website that is using form-based authentication
 http://stackoverflow.com/questions/5748789/java-login-to-a-website-that-is-using-form-based-authentication
 
+Login form is:
+<form AUTOCOMPLETE="off" id="logonForm" name="logonForm" target="logonAppPage" 
+    method="post" action="j_security_check">
+ <input name="no_cert_storing" type="hidden" value="on"/>
+ <input type="hidden" name="j_salt" value="9CbnJuv2Q3KEoFYQJfl+TZcnbqU=" />
+ <input type="text" id="logonuidfield"  name="j_username" value="" title="User *"/>
+ <input type="password" id="logonpassfield"  name="j_password"/>
+ <input class="urBtnStdNew" type="submit" name="uidPasswordLogon" value="Log On"/>
+</form>

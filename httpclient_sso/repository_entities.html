@@ -1,242 +1,237 @@
-<script>
-  var inPortalScript = false
-  var webpath = "/logon_ui_resources/"
-</script>
-
 <html>
-<head>
-<BASE target="_self">
-<link rel=stylesheet href="/logon_ui_resources/css/ur/ur_nn6.css">
-<title>User Management, SAP AG</title>
-<script language="javascript">
-var originWindowName=window.name;
-window.name="logonAppPage";
-function restoreWindow() {
-try{
-window.name=originWindowName;
-} catch(ex){}
-}
-</script>
-<script language="JavaScript">
-function putFocus(formInst, elementInst) {
-  if (document.forms.length > 0) {
-    document.forms[formInst].elements[elementInst].focus();
-  }
-}
-
-function setValuesAutoCreation() {
-var form = document.getElementById('logonForm');
-form.j_username.value="";
-form.j_password.value="";
-form.automaticAccountCreation.value="true";
-}
-function submitForm() {
-var form = document.getElementById('logonForm');
-form.submit();
-}
-function clearEntries() {
-  document.logonForm.longUid.value="";
-  document.logonForm.password.value="";
-}
-function setFocusToFirstField() {
- myform = document.logonForm;
- try{
-   for (i=0; i<myform.length; i++) {
-    elem = myform.elements[i];
-    if (!elem.disabled) {
-      elemType = elem.type;
-      if (elemType=="text" || elemType=="password") {
-       if (!elem.readOnly) {
-          elem.focus();
-          break;
-       }
-      }
-      if (elemType=="select-one" || elemType=="select-multiple" || elemType=="checkbox" || elemType=="radio") {
-        elem.focus();
-        break;
-      }
-    }
-   }
- } catch(ex){
- }
-}
-function addTenantPrefix() {
-  return true;
-}
-</script>
-</head>
-<body class="urBdyStd" bgcolor="#F7F9FB" onLoad="setFocusToFirstField()" onUnload="restoreWindow()">
-
-
-
-
-
-
-
-<script language="JavaScript">
-var blockPage = false;
-</script>
-
-
-
-<script language="JavaScript">
-function writeMessage() {
-	document.write("<h2>A possible Cross-Frame Scripting attack has been prevented. Please contact your system administrator or refer to SAP Note 1651004 for more information.</h2>");
-}
-
-if (blockPage) {
-	var browserName = navigator.appName;
-	// According to the tests IE works with document.execCommand(), but Firefox and Chrome do not
-	if (browserName.indexOf("Explorer") > -1) {
-		writeMessage();
-		document.execCommand("Stop");
-	} else {
-		writeMessage();
-		window.stop();
-	}
-}
-</script>
-
-
-
-
-
-
-
-
-
-
-<table id="tblFrmUI" width="790px" valign="middle" dir="ltr" align="center" cellPadding="0" cellSpacing="0" style="background-color:#ffffff;margin-top:50px;">
-  
-	<tr>
-		<td><img src="/logon_ui_resources/layout/lf_tl.png" width="29" height="32"></td>
-		<td background="/logon_ui_resources/layout/lf_st.png"></td>
-		<td><img src="/logon_ui_resources/layout/lf_tr.png" width="27" height="32"></td>
-	</tr>
-	
-	<tr>
-	  
-		<td background="/logon_ui_resources/layout/lf_sl.png"></td>
-		
-		<td width="100%">		
-		
-      <table id="tblInnerCnt" dir="ltr" cellpadding="0" cellspacing="0">
-    
-				<tr>					
-					<td valign="top"><div class="urBrandImage"><img src="/logon_ui_resources/layout/branding-image.jpg" alt="Branding Image" border="0"></div></td>
-					<td width="100%"></td>
-					<td>					
-					 <table height="360px" cellPadding="0" cellSpacing="0">					
-							<tr>								
-								<td valign="top"><div class="urProductName"><img src="/logon_ui_resources/layout/branding-text.gif" alt="" border="0"></div></td>
-							</tr>							
-							<tr>
-								<td valign="top" align="left">							
-										<div class="urLogonData">										
-											<!-- data table starts after this line -->
-											<FORM  AUTOCOMPLETE="off"  id="logonForm" name="logonForm" target="logonAppPage" method="post" action="j_security_check" >
-<input name="no_cert_storing" type="hidden" value="on"><input type="hidden" name="j_salt" value="7yde3pU+DoaQ0TsRbcMx8Nf44LM=" />
-
-											
-											<table class="urLogonTable" cellSpacing="3px" cellPadding="0" valign="top">																									
-												<tr><td colspan="3">
-													<div class="urMessageArea">
-														<!--	Federation Error Message				-->
-																												
-																												
-													</div>
-												</td></tr>												
-																
-												<!-- userid -->
-												<tr><td>
-													<label class="urLblStdNew"><nobr>User<span class=urLblReq>&nbsp;*</span></nobr></label>
-
-												</td>
-												<td>
-													<input type="text" id="logonuidfield"  name="j_username" value="" title="User *" class="urEdfTxtEnbl" style="width:170px">
-												</td>
-												<td width="100%">&nbsp;</td></tr>
-												<!-- password -->
-												<tr><td>
-													<label class="urLblStdNew" for="logonpassfield"><nobr>Password<span class=urLblReq>&nbsp;*</span></nobr></label>
-
-												</td>
-												<td>
-													<input type="password" id="logonpassfield"  name="j_password" class="urEdfTxtEnbl" style="width:170px">
-												</td>
-												<td>&nbsp;</td></tr>
-												<!-- create certificate -->
-												
-												<!-- Federate User checkbox -->
-												
-												<tr><td width="100%" colspan="3">&nbsp;</td></tr>
-												<tr><td>&nbsp;																											
-												</td><td align="right">	
-													<!-- logon button -->
-													<input class="urBtnStdNew" type="submit" name="uidPasswordLogon" value="Log On" >
-
-													
-												</td>
-												<td>&nbsp;</td></tr>												
-												<!-- link to certificate logon -->
-												
-												<!-- logon help -->
-												
-											</table>
-											</form>
-
-										<!-- data table ends before this line -->
-										</div>																	
-								</td>
-							</tr>
-							<tr>
-								<td valign="bottom">									
-									<div class="urCopyrightFrame">									 
-										<div class="urCopyrightText">Copyright &copy; SAP AG. All Rights Reserved.</div>					
-										<div class="urCopyrightImage"><img src="/logon_ui_resources/layout/sap_logo.png" alt="SAP AG" title="SAP AG" width="55" height="27"></div>
-									</div>				
-								</td>
-							</tr>
-						</table>
-					</td>
-				</tr>
-			</table>			
-		</td>		
-		
-		<td background="/logon_ui_resources/layout/lf_sr.png"></td>
-		
-	</tr>
-	
-	<tr>
-		<td><img src="/logon_ui_resources/layout/lf_bl.png" width="29" height="32"></td>
-		<td align="center" background="/logon_ui_resources/layout/lf_sb.png"><span class="clip"><img src="/logon_ui_resources/layout/lf_clip.png" width="298" height="32"></span></td>
-		<td><img src="/logon_ui_resources/layout/lf_br.png" width="27" height="32"></td>
-	</tr>
-	
+<head><title>Simple Query </title><link rel="stylesheet" type="text/css" href="../start/layout/sapstyle.css"></head>
+<body>
+<h2>Simple Query </h2>
+<form action="./SimpleQuery" method=post>
+<h3>Define the Software Component</h3>
+<p>
+<input type=radio name="qc" value="All non-local software components">All non-local software components<br>
+<input type=radio name="qc" value="All local software components">All local software components<br>
+<input type=radio name="qc" value="All software components" checked>All software components<br>
+<input type=radio name="qc" value="All newest software components">All newest software components<br>
+<input type=radio name="qc" value="This one">This one<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<select name="swcL" size=1>
+<option value="Local Software Components">Local Software Components</option>
+<option value="ConnectivityTestComponent">ConnectivityTestComponent</option>
+<option value="MDM ADAPTER">MDM ADAPTER</option>
+<option value="PINTERNALS_TPL of pinternals.com">PINTERNALS_TPL of pinternals.com</option>
+<option value="SAP BASIS">SAP BASIS</option>
+<option value="SFTP ADAPTER">SFTP ADAPTER</option>
+<option value="TN_A_NSI of inlinegroup.ru">TN_A_NSI of inlinegroup.ru</option>
+<option value="TN_C_COMMON of inlinegroup.ru">TN_C_COMMON of inlinegroup.ru</option>
+<option value="TN_I_CBD of inlinegroup.ru">TN_I_CBD of inlinegroup.ru</option>
+<option value="TN_I_CBR of inlinegroup.ru">TN_I_CBR of inlinegroup.ru</option>
+<option value="TN_I_GALACTICA of inlinegroup.ru">TN_I_GALACTICA of inlinegroup.ru</option>
+<option value="TN_I_KLADR of inlinegroup.ru">TN_I_KLADR of inlinegroup.ru</option>
+<option value="TN_I_MDM of inlinegroup.ru">TN_I_MDM of inlinegroup.ru</option>
+<option value="TN_I_MPHS of inlinegroup.ru">TN_I_MPHS of inlinegroup.ru</option>
+<option value="TN_I_SVNSI of inlinegroup.ru">TN_I_SVNSI of inlinegroup.ru</option>
+<option value="TN_METAMODEL of inlinegroup.ru">TN_METAMODEL of inlinegroup.ru</option>
+<option value="TN_PA_MDM of inlinegroup.ru">TN_PA_MDM of inlinegroup.ru</option>
+<option value="TN_PA_MPHS of inlinegroup.ru">TN_PA_MPHS of inlinegroup.ru</option>
+<option value="TN_PA_SVNS of inlinegroup.ru">TN_PA_SVNS of inlinegroup.ru</option>
+<option value="TN_PI_MDM_MPHS of inlinegroup.ru">TN_PI_MDM_MPHS of inlinegroup.ru</option>
+<option value="TN_PI_MDM_SVNS of inlinegroup.ru">TN_PI_MDM_SVNS of inlinegroup.ru</option>
+<option value="TN_PI_SVNS_MDM of inlinegroup.ru">TN_PI_SVNS_MDM of inlinegroup.ru</option>
+</select>
+<input type=submit name=action value="->" />
+<select name="swcV" size=1>
+</select>
+</p>
+<input type=checkbox name="underL" value="true"
+ checked
+>Consider underlying software components</input>
+<input type=checkbox name="modOnly" value="false"
+>Return only modified objects</input>
+<hr>
+<h3>Changelists</h3>
+<input type=checkbox name="changeLOnly" value="true"
+>Consider changelists only</input><br>
+<input type=checkbox name="changeL" value="true"
+ checked
+>Consider all of user (or a list of CLIDs starting with '#' and separated by ','): </input>
+<input name="userL" type="text" size="40" value="KUZNETSOVIN"><h3>Sync Tables</h3>
+<input type=checkbox name="syncTabL" value="true"
+ checked
+>Use sync tables
+<h3>Object Versions</h3>
+<input type="radio" name="deletedL" value="N"
+ checked
+ >Consider only non-deleted <br>
+<input type="radio" name="deletedL" value="D"
+ >Consider only deleted <br>
+<input type="radio" name="deletedL" value="B"
+ >Consider deleted and non-deleted <br>
+</p>
+<h3>Query XML </h3>
+Release:  <select name="xmlReleaseL" size=1>
+<option value="2.0">2.0</option>
+<option value="3.0">3.0</option>
+<option selected value="7.1">7.1</option>
+</select><br>
+<input type=checkbox name="requestXMLL" value="true"
+>Show request XML</input><br>
+<input type=checkbox name="responseXMLL" value="true"
+>Show response XML</input><br>
+<input type=checkbox name="useXMLL" value="true"
+>Use the following XML for the request:</input><br>
+<textarea name="queryRequestXMLL" cols="50" rows="8" wrap="virtual"></textarea></p>
+<hr>
+<h3>Define the Object type(s)</h3>
+<p>
+<select name="types" size=10 multiple>
+<option value="type">ABAP Dictionary Type</option>
+<option value="ariscomocc">ARISCOMOCC</option>
+<option value="ariscxndefext">ARISCXNDEFEXT</option>
+<option value="ariscxnocc">ARISCXNOCC</option>
+<option value="ariscxnoccext">ARISCXNOCCEXT</option>
+<option value="arisextconfig">ARISEXTCONFIG</option>
+<option value="arismodelext">ARISMODELEXT</option>
+<option value="arisobjdefext">ARISOBJDEFEXT</option>
+<option value="arisobjocc">ARISOBJOCC</option>
+<option value="arisobjoccext">ARISOBJOCCEXT</option>
+<option value="arisprofile">ARISPROFILE</option>
+<option value="arisrulekind">ARISRULEKIND</option>
+<option value="aristextocc">ARISTEXTOCC</option>
+<option value="processstep">Action</option>
+<option value="BO_Action">Action</option>
+<option value="AdapterMetaData">Adapter Metadata</option>
+<option value="agent">Agent</option>
+<option value="AlertCategory">Alert Category</option>
+<option value="MAP_ARCHIVE_PRG">Archive Program</option>
+<option value="BO_Association">Association</option>
+<option value="mme_ca">Attribute</option>
+<option value="mme">Attribute Definition</option>
+<option value="arisminisymbol">Attribute Icon</option>
+<option value="arisattribute">Attribute Type</option>
+<option value="arisattrgroup">Attribute Type Group</option>
+<option value="BO_Object">Business Object</option>
+<option value="BO_Enh">Business Object Enhancement</option>
+<option value="BO_Node">Business Object Node</option>
+<option value="ConnTestObj">CONNTESTOBJ</option>
+<option value="ariscommonfile">Common File</option>
+<option value="ChannelTemplate">Communication Channel Template</option>
+<option value="ariscxndef">Connection</option>
+<option value="ifmcontobj">Context Object</option>
+<option value="ifmtypedef">Data Type</option>
+<option value="ifmtypeenh">Data Type Enhancement</option>
+<option value="DOCU">Documentation</option>
+<option value="ifmextdef">External Definition</option>
+<option value="ifmextmes">External Message</option>
+<option value="ifmfaultm">Fault Message Type</option>
+<option value="arisfilter">Filter</option>
+<option value="FOLDER">Folder</option>
+<option value="arisfssheet">Font Format</option>
+<option value="FUNC_LIB">Function Library</option>
+<option value="FUNC_LIB_PROG">Function Library Program</option>
+<option value="rfc">Function Module</option>
+<option value="idoc">IDoc</option>
+<option value="imsg">IDoc Message Type</option>
+<option value="iseg">IDoc Segment</option>
+<option value="ityp">IDoc Type</option>
+<option value="ifmclsfn">IFMCLSFN</option>
+<option value="TRAFO_JAR">Imported Archive</option>
+<option value="RepBProcess">Integration Process</option>
+<option value="BO_DERIVATOR">LABEL_BO_DERIVATOR</option>
+<option value="MAP_HELPER">MAP_HELPER</option>
+<option value="arismacro">Macro</option>
+<option value="MAP_TEMPLATE">Mapping Template</option>
+<option value="XI_TRAFO">Message Mapping</option>
+<option value="ifmmessage">Message Type</option>
+<option value="arismodel">Model</option>
+<option value="arismodeltype">Model Type</option>
+<option value="RepBAMProcess">Monitoring Process</option>
+<option value="namespdecl">Namespace Definition</option>
+<option value="ariscomdef">OLE Object</option>
+<option value="ifmopmess">OPERMES</option>
+<option value="arisobjdef">Object Definition</option>
+<option value="ifmoper">Operation</option>
+<option value="MAPPING">Operation Mapping</option>
+<option value="processcomp">Process Component</option>
+<option value="process">Process Integration Scenario</option>
+<option value="BO_Query">Query</option>
+<option value="rfcmsg">RFC Message</option>
+<option value="arisreport">Report</option>
+<option value="ifmmessif">Service Interface</option>
+<option value="workspace">Software Component Version</option>
+<option value="BO_StatusSchema">Status Schema</option>
+<option value="BO_StatusVar">Status Variable</option>
+<option value="RepPATProcess">Step Group</option>
+<option value="RepSUBProcess">Subprocess</option>
+<option value="arissymbol">Symbol</option>
+<option value="BTMTaskAgent">Task Agent</option>
+<option value="BTMTaskType">Task Type</option>
+<option value="aristemplate">Template</option>
+<option value="MAPPING_TEST">Test Cases</option>
+<option value="aristextdef">Text Object</option>
+<option value="ifmuitexts">UI Text Object</option>
+<option value="ifmuitexvars">UI Text Variants</option>
+<option value="usageProfile">Usage Profile</option>
+<option value="ariswpfile">WebPublisher File</option>
+<option value="ariswpscript">WebPublisher Script</option>
+</select>
+</p><p>
+<input type=submit name=action value="Refresh depended values" />
+</p><hr>
+<h3>Define the Query Condition(s)</h3>
+Value types:#BO#(Boolean),#DT#(Date),#GU#(Guid),
+#IN#(Integer),#XK#(XiKey),#XR#(XiRef),#AG#(Guid[])<br>
+<table>
+<tr>
+<td>
+<input type=checkbox name="qcActiveL0" value="true"
+ checked
+></input>
+</td>
+<td>
+<select name="qcKeyL0" size=7>
+<option value="QA_DOCU_LANGUAGE">QA_DOCU_LANGUAGE</option>
+<option value="QA_DOCU_LANGUAGE_STRICT">QA_DOCU_LANGUAGE_STRICT</option>
+<option value="QA_KEY_RESTRICTION">QA_KEY_RESTRICTION</option>
+</select>
+</td>
+<td>
+<select name="qcOpL0" size=7>
+<option value="EQ">EQ</option>
+<option value="NOT_EQ">NOT_EQ</option>
+<option value="LIKE">LIKE</option>
+<option value="NOT_LIKE">NOT_LIKE</option>
+<option value="GE">GE</option>
+<option value="LE">LE</option>
+<option value="GT">GT</option>
+<option value="LT">LT</option>
+<option value="BETWEEN">BETWEEN</option>
+<option value="NOT_BETWEEN">NOT_BETWEEN</option>
+<option value="IN">IN</option>
+<option value="NOT_IN">NOT_IN</option>
+<option value="IS_NULL">IS_NULL</option>
+<option value="IS_NOT_NULL">IS_NOT_NULL</option>
+</select>
+</td>
+<td>
+<input name="qcValueL0" type="text" size="30">
+</td>
+<td>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type=submit name=action value="Remove0" maxlength=6/>
+</td>
+</tr>
 </table>
- 
-
-<script type="text/javascript">
-<!--		
-  var docDir = document.dir;    
-  if(docDir=="rtl" || docDir=="RTL"){   
-     var elTableCnt = document.getElementById("tblInnerCnt");
-     if(elTableCnt!=undefined){
-       elTableCnt.style.direction="rtl";        
-     }     
-  }  
-  var isFormSubmitted = false;
-  if( document.forms ) {		
-    document.forms[0].onsubmit=function(){
-      if( isFormSubmitted ) {
-        return false;
-      } else {
-        isFormSubmitted = true;
-        return true;
-      }
-    }
-  }      
--->
-</script>
-</body>
-</html>
+<br><input type=submit name=action value="Add new condition" />
+<hr>
+<h3>Define the Result Attributes</h3>
+<select name="result" size=10 multiple>
+<option selected value="RA_XILINK">Link to object</option>
+<option value="RA_CHECK_EXISTENCE_OF_TYPE">RA_CHECK_EXISTENCE_OF_TYPE</option>
+<option value="RA_CHECK_EXISTENCE_OF_TYPEnot">RA_CHECK_EXISTENCE_OF_TYPEnot</option>
+<option value="RA_LINK_LIST">RA_LINK_LIST</option>
+<option value="RA_LINK_LIST_ROLE">RA_LINK_LIST_ROLE</option>
+<option value="RA_LINK_LIST_ROLE_POS">RA_LINK_LIST_ROLE_POS</option>
+</select>
+<hr>
+<p><input type=submit name=action value="Start query" /></p>
+<hr>
+<hr>
+<hr>
+</body></html>

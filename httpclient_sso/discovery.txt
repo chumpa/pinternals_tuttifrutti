@@ -58,11 +58,28 @@ CloseableHttpResponse response2 = httpclient.execute(httpost);
 
 // How to check if login is successful or bad?
 //	response2.getStatusLine().getStatusCode() == 302 is OK
-//	response2.getStatusLine().getStatusCode() == 200 is BAD if we get response1 with "User authentication failed" string
+//	response2.getStatusLine().getStatusCode() == 200 is BAD if we get response1 
+//		with "User authentication failed" string and other salt AGAIN!
+//		(how to extract full error message text is below, at 3.)
 // others -- unexpected behaviour
-
 
 httpget = new HttpGet(hp + s731repsup);	// now you are able to ask SimpleQuery
 httpget = new HttpGet(hp + s731dirsup);	// now you are able to ask SimpleQuery
 
+// 3. How to extract full error message text?
+<div class="urMessageArea">
+	<!--	Federation Error Message				-->
+		<!-- display error message if there is one -->
+		<div class="urMsgBarErr">
+			<span class="urMsgBarImgError"><img height="12" width="12" src="/logon_ui_resources/css/common/1x1.gif"></span><span class="urTxtMsg" tabindex="0">User authentication failed</span>
+		</div>
+</div>
 
+and for case no error given there are 
+<div class="urMessageArea">
+	<!--	Federation Error Message				-->
+															
+															
+</div>
+
+// So, you have to find <!--	Federation Error Message				--> and nearest </div> and extract message

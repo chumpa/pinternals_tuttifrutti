@@ -42,6 +42,7 @@ public class ApacheTest {
 	static String s731uaa = "/webdynpro/dispatcher/sap.com/tc~sec~ume~wd~umeadmin/UmeAdminApp";
 	static String s731ujsc = "/webdynpro/dispatcher/sap.com/tc~sec~ume~wd~umeadmin/j_security_check";
 	static String saltB = "<input type=\"hidden\" name=\"j_salt\" value=\"", saltE="\"";
+	static String authAnswerB = "<!--	Federation Error Message				-->", authAnswerE = "</div>";
 	static String s731repsup = "/rep/support/SimpleQuery";
 	static String s731dirsup = "/dir/support/SimpleQuery";
 	
@@ -56,6 +57,7 @@ public class ApacheTest {
 		BasicCookieStore cookieStore = new BasicCookieStore();
 		CloseableHttpClient httpclient = HttpClients.custom().setDefaultCookieStore(cookieStore).build();
 		String salt=null;
+		boolean showCookies = false;
 	        try {
 	            HttpGet httpget = new HttpGet(hp + s731uaa);
 	            httpget.setHeader("User-Agent", sUA);
@@ -69,18 +71,19 @@ public class ApacheTest {
                     int i = s.indexOf(saltB)+saltB.length(), j = s.indexOf(saltE, i);
                     salt = s.substring(i,j);
 //                    System.out.println(s);
-                    System.out.println("salt=|"+salt+"|");
-	                
+                    System.out.println("salt:"+salt+"");
 
-	                System.out.println("Initial set of cookies:");
-	                List<Cookie> cookies = cookieStore.getCookies();
-	                if (cookies.isEmpty()) {
-	                    System.out.println("None");
-	                } else {
-	                    for (i = 0; i < cookies.size(); i++) {
-	                        System.out.println("- " + cookies.get(i).toString());
-	                    }
-	                }
+                    if (showCookies) {
+		                System.out.println("Initial set of cookies:");
+		                List<Cookie> cookies = cookieStore.getCookies();
+		                if (cookies.isEmpty()) {
+		                    System.out.println("None");
+		                } else {
+		                    for (i = 0; i < cookies.size(); i++) {
+		                        System.out.println("- " + cookies.get(i).toString());
+		                    }
+		                }
+                    }
 	            } finally {
 	                response1.close();
 	            }
@@ -94,48 +97,68 @@ public class ApacheTest {
 	            httpost.setEntity(new UrlEncodedFormEntity(nvps, Consts.UTF_8));
 
 	            CloseableHttpResponse response2 = httpclient.execute(httpost);
+	            boolean ok = false;
+	            String errorAuth = "(reason of error is undetected)";
 	            try {
 	                HttpEntity entity = response2.getEntity();
-
-	                System.out.println("Login form get: " + response2.getStatusLine().getStatusCode() + "_" + response2.getStatusLine());
+	                System.out.println("Post-login form get: " + response2.getStatusLine().getStatusCode() + "_" + response2.getStatusLine());
+	                ok = response2.getStatusLine().getStatusCode() == 302;
 	                String s = getContent(entity, true);
 	                new PrintStream(new File("login_rezult.html")).print(s);
 
-	                System.out.println("Post logon cookies:");
-	                List<Cookie> cookies = cookieStore.getCookies();
-	                if (cookies.isEmpty()) {
-	                    System.out.println("None");
-	                } else {
-	                    for (int i = 0; i < cookies.size(); i++) {
-	                        System.out.println("- " + cookies.get(i).toString());
-	                    }
+                    if (showCookies) {
+		                System.out.println("Post logon cookies:");
+		                List<Cookie> cookies = cookieStore.getCookies();
+		                if (cookies.isEmpty()) {
+		                    System.out.println("None");
+		                } else {
+		                    for (int i = 0; i < cookies.size(); i++) {
+		                        System.out.println("- " + cookies.get(i).toString());
+		                    }
+		                }
+                    }
+	                if (!ok) {
+	                	int i = s.indexOf(authAnswerB);
+	                	if (i!=-1) i += authAnswerB.length();
+	                	int j = s.indexOf(authAnswerE, i);
+	                	errorAuth = s.substring(i, j + authAnswerE.length()).trim();
 	                }
 	            } finally {
 	                response2.close();
 	            }
 	            
-	            httpget = new HttpGet(hp + s731repsup);
-	            httpget.setHeader("User-Agent", sUA);
-	            response1 = httpclient.execute(httpget);
-	            try {
-	                HttpEntity entity = response1.getEntity();
-	                String s = getContent(entity, true);
-                    new PrintStream(new File("repository_entities.html")).print(s);
-	            } finally {
-	                response1.close();
+	            if (ok) {
+	            	System.out.println("Authorization for " + uname + " is OK!");
+	            	
+		            httpget = new HttpGet(hp + s731repsup);
+	//	            httpget.setHeader("User-Agent", sUA);
+		            response1 = httpclient.execute(httpget);
+		            try {
+		                HttpEntity entity = response1.getEntity();
+		                String s = getContent(entity, true);
+	                    new PrintStream(new File("repository_entities.html")).print(s);
+	                    System.out.println("See repository_entities.html");
+		            } finally {
+		                response1.close();
+		            }
+		            
+		            httpget = new HttpGet(hp + s731dirsup);
+	//	            httpget.setHeader("User-Agent", sUA);
+		            response1 = httpclient.execute(httpget);
+		            try {
+		                HttpEntity entity = response1.getEntity();
+		                String s = getContent(entity, true);
+	                    new PrintStream(new File("directory_entities.html")).print(s);
+	                    System.out.println("See directory_entities.html");
+		            } finally {
+		                response1.close();
+		            }
+	            } else {
+	            	System.out.println("Authorization for " + uname + " is FAILED!");
+	            	System.out.println("ERROR of authorization: " + errorAuth);
+	            	new File("repository_entities.html").delete();
+	            	new File("directory_entities.html").delete();
 	            }
-	            
-	            httpget = new HttpGet(hp + s731dirsup);
-	            httpget.setHeader("User-Agent", sUA);
-	            response1 = httpclient.execute(httpget);
-	            try {
-	                HttpEntity entity = response1.getEntity();
-	                String s = getContent(entity, true);
-                    new PrintStream(new File("directory_entities.html")).print(s);
-	            } finally {
-	                response1.close();
-	            }
-	            
 	        } finally {
 	            httpclient.close();
 	        }

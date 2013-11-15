@@ -1,6 +1,8 @@
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.PrintStream;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +21,7 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
 
 public class ApacheTest {
-	
+
 	static byte[] readStream(InputStream is, boolean close) throws IOException {
 		ArrayList<Byte> a = new ArrayList<Byte>(100);
 		int i = is.read();
@@ -36,27 +38,27 @@ public class ApacheTest {
 		return b;
 	}
 	
-	static String s731 = "http://sapsrv:50600/webdynpro/dispatcher/sap.com/tc~sec~ume~wd~umeadmin/UmeAdminApp";
-	static String s731ua = "http://sapsrv:50600/useradmin";
-	static String s731ja = "http://sapsrv:50600/webdynpro/dispatcher/sap.com/tc~sec~ume~wd~umeadmin/j_security_check";
 	static String sUA = "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.48 Safari/537.36";
-	static String uname = "Uuu";
-	static String passwd = "Ppp";
+	static String s731uaa = "/webdynpro/dispatcher/sap.com/tc~sec~ume~wd~umeadmin/UmeAdminApp";
+	static String s731ujsc = "/webdynpro/dispatcher/sap.com/tc~sec~ume~wd~umeadmin/j_security_check";
 	static String saltB = "<input type=\"hidden\" name=\"j_salt\" value=\"", saltE="\"";
+	static String s731repsup = "/rep/support/SimpleQuery";
+	static String s731dirsup = "/dir/support/SimpleQuery";
 	
 	static String getContent(HttpEntity entity, boolean close) throws UnsupportedEncodingException, IllegalStateException, IOException {
 		String s = new String(readStream(entity.getContent(), close), "UTF-8");
         return s;
 	}
 	
-	  public static void main(String[] args) throws Exception {
-	        BasicCookieStore cookieStore = new BasicCookieStore();
-	        CloseableHttpClient httpclient = HttpClients.custom().setDefaultCookieStore(cookieStore).build();
-	        String salt=null;
+	public static void main(String[] args) throws Exception {
+		String hp = args[0], uname = args[1], passwd = args[2];
+		
+		BasicCookieStore cookieStore = new BasicCookieStore();
+		CloseableHttpClient httpclient = HttpClients.custom().setDefaultCookieStore(cookieStore).build();
+		String salt=null;
 	        try {
-	            HttpGet httpget = new HttpGet(s731);
+	            HttpGet httpget = new HttpGet(hp + s731uaa);
 	            httpget.setHeader("User-Agent", sUA);
-
 
 	            CloseableHttpResponse response1 = httpclient.execute(httpget);
 	            try {
@@ -83,7 +85,7 @@ public class ApacheTest {
 	                response1.close();
 	            }
 
-	            HttpPost httpost = new HttpPost(s731ja);
+	            HttpPost httpost = new HttpPost(hp + s731ujsc);
 	            List <NameValuePair> nvps = new ArrayList <NameValuePair>();
 	            nvps.add(new BasicNameValuePair("j_username", uname));
 	            nvps.add(new BasicNameValuePair("j_password", passwd));
@@ -95,9 +97,9 @@ public class ApacheTest {
 	            try {
 	                HttpEntity entity = response2.getEntity();
 
-	                System.out.println("Login form get: " + response2.getStatusLine());
+	                System.out.println("Login form get: " + response2.getStatusLine().getStatusCode() + "_" + response2.getStatusLine());
 	                String s = getContent(entity, true);
-	                System.out.println("Login result is: " + s);
+	                new PrintStream(new File("login_rezult.html")).print(s);
 
 	                System.out.println("Post logon cookies:");
 	                List<Cookie> cookies = cookieStore.getCookies();
@@ -111,6 +113,29 @@ public class ApacheTest {
 	            } finally {
 	                response2.close();
 	            }
+	            
+	            httpget = new HttpGet(hp + s731repsup);
+	            httpget.setHeader("User-Agent", sUA);
+	            response1 = httpclient.execute(httpget);
+	            try {
+	                HttpEntity entity = response1.getEntity();
+	                String s = getContent(entity, true);
+                    new PrintStream(new File("repository_entities.html")).print(s);
+	            } finally {
+	                response1.close();
+	            }
+	            
+	            httpget = new HttpGet(hp + s731dirsup);
+	            httpget.setHeader("User-Agent", sUA);
+	            response1 = httpclient.execute(httpget);
+	            try {
+	                HttpEntity entity = response1.getEntity();
+	                String s = getContent(entity, true);
+                    new PrintStream(new File("directory_entities.html")).print(s);
+	            } finally {
+	                response1.close();
+	            }
+	            
 	        } finally {
 	            httpclient.close();
 	        }

@@ -3,12 +3,8 @@
 login to /useradmin:	response code 302, redirect to /useradmin/userAdminServlet
 login to /useradmin/userAdminServlet:	response code 500, redirect to http://sap:50600/webdynpro/dispatcher/sap.com/tc~sec~ume~wd~umeadmin/UmeAdminApp
 
-login to http://sap:50600/webdynpro/dispatcher/sap.com/tc~sec~ume~wd~umeadmin/UmeAdminApp: rc=500, no good fields
+login to http://sap:50000/webdynpro/dispatcher/sap.com/tc~sec~ume~wd~umeadmin/UmeAdminApp: rc=500, no good fields
 
-
-Let's see to SO:
-Java - Login to a website that is using form-based authentication
-http://stackoverflow.com/questions/5748789/java-login-to-a-website-that-is-using-form-based-authentication
 
 Login form is:
 <form AUTOCOMPLETE="off" id="logonForm" name="logonForm" target="logonAppPage" 
@@ -19,3 +15,54 @@ Login form is:
  <input type="password" id="logonpassfield"  name="j_password"/>
  <input class="urBtnStdNew" type="submit" name="uidPasswordLogon" value="Log On"/>
 </form>
+
+
+-----------------------------------------
+So the idea is following:
+
+// Correct user-agent is VERY IMPORTANT
+String sUA = "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.48 Safari/537.36";
+String s731uaa = "/webdynpro/dispatcher/sap.com/tc~sec~ume~wd~umeadmin/UmeAdminApp";
+String s731ujsc = "/webdynpro/dispatcher/sap.com/tc~sec~ume~wd~umeadmin/j_security_check";
+String saltB = "<input type=\"hidden\" name=\"j_salt\" value=\"", saltE="\"";
+String s731repsup = "/rep/support/SimpleQuery";
+String s731dirsup = "/dir/support/SimpleQuery";
+	
+BasicCookieStore cookieStore = new BasicCookieStore();
+CloseableHttpClient httpclient = HttpClients.custom().setDefaultCookieStore(cookieStore).build();
+
+// 1. Ask login form
+
+HttpGet httpget = new HttpGet(hp + s731uaa);
+httpget.setHeader("User-Agent", sUA);
+CloseableHttpResponse response1 = httpclient.execute(httpget);
+HttpEntity entity = response1.getEntity();
+
+String s = getContent(entity, true);
+int i = s.indexOf(saltB)+saltB.length(), j = s.indexOf(saltE, i);
+// Extract given salt, for example oKWv4o9CIjyusQ8/CpJ1JAkkty8= or 9CbnJuv2Q3KEoFYQJfl+TZcnbqU=
+salt = s.substring(i,j);
+
+// Now cookieStore.getCookies() is set of pre-login cookies. Don't remove them.
+
+// 2. Post salt with login to another URL
+HttpPost httpost = new HttpPost(hp + s731ujsc);
+List <NameValuePair> nvps = new ArrayList <NameValuePair>();
+nvps.add(new BasicNameValuePair("j_username", uname));
+nvps.add(new BasicNameValuePair("j_password", passwd));
+nvps.add(new BasicNameValuePair("j_salt", salt));
+httpost.setEntity(new UrlEncodedFormEntity(nvps, Consts.UTF_8));
+CloseableHttpResponse response2 = httpclient.execute(httpost);
+
+// Now cookieStore.getCookies() is set of post-logon cookies. Don't destroy it.
+
+// How to check if login is successful or bad?
+//	response2.getStatusLine().getStatusCode() == 302 is OK
+//	response2.getStatusLine().getStatusCode() == 200 is BAD if we get response1 with "User authentication failed" string
+// others -- unexpected behaviour
+
+
+httpget = new HttpGet(hp + s731repsup);	// now you are able to ask SimpleQuery
+httpget = new HttpGet(hp + s731dirsup);	// now you are able to ask SimpleQuery
+
+

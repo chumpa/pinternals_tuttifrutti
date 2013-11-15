@@ -1,0 +1,247 @@
+<script>
+  var inPortalScript = false
+  var webpath = "/logon_ui_resources/"
+</script>
+
+<html>
+<head>
+<BASE target="_self">
+<link rel=stylesheet href="/logon_ui_resources/css/ur/ur_ie5.css">
+<title>User Management, SAP AG</title>
+<script language="javascript">
+var originWindowName=window.name;
+window.name="logonAppPage";
+function restoreWindow() {
+try{
+window.name=originWindowName;
+} catch(ex){}
+}
+</script>
+<script language="JavaScript">
+function putFocus(formInst, elementInst) {
+  if (document.forms.length > 0) {
+    document.forms[formInst].elements[elementInst].focus();
+  }
+}
+
+function setValuesAutoCreation() {
+var form = document.getElementById('logonForm');
+form.j_username.value="";
+form.j_password.value="";
+form.automaticAccountCreation.value="true";
+}
+function submitForm() {
+var form = document.getElementById('logonForm');
+form.submit();
+}
+function clearEntries() {
+  document.logonForm.longUid.value="";
+  document.logonForm.password.value="";
+}
+function setFocusToFirstField() {
+ myform = document.logonForm;
+ try{
+   for (i=0; i<myform.length; i++) {
+    elem = myform.elements[i];
+    if (!elem.disabled) {
+      elemType = elem.type;
+      if (elemType=="text" || elemType=="password") {
+       if (!elem.readOnly) {
+          elem.focus();
+          break;
+       }
+      }
+      if (elemType=="select-one" || elemType=="select-multiple" || elemType=="checkbox" || elemType=="radio") {
+        elem.focus();
+        break;
+      }
+    }
+   }
+ } catch(ex){
+ }
+}
+function addTenantPrefix() {
+  return true;
+}
+</script>
+</head>
+<body class="urBdyStd" bgcolor="#F7F9FB" onLoad="setFocusToFirstField()" onUnload="restoreWindow()">
+
+
+
+
+
+
+
+<script language="JavaScript">
+var blockPage = false;
+</script>
+
+
+
+<script language="JavaScript">
+function writeMessage() {
+	document.write("<h2>A possible Cross-Frame Scripting attack has been prevented. Please contact your system administrator or refer to SAP Note 1651004 for more information.</h2>");
+}
+
+if (blockPage) {
+	var browserName = navigator.appName;
+	// According to the tests IE works with document.execCommand(), but Firefox and Chrome do not
+	if (browserName.indexOf("Explorer") > -1) {
+		writeMessage();
+		document.execCommand("Stop");
+	} else {
+		writeMessage();
+		window.stop();
+	}
+}
+</script>
+
+
+
+
+
+
+
+
+
+
+<table id="tblFrmUI" width="790px" valign="middle" dir="ltr" align="center" cellPadding="0" cellSpacing="0" style="background-color:#ffffff;margin-top:50px;">
+  
+	<tr>
+		<td><img src="/logon_ui_resources/layout/lf_tl.png" width="29" height="32"></td>
+		<td background="/logon_ui_resources/layout/lf_st.png"></td>
+		<td><img src="/logon_ui_resources/layout/lf_tr.png" width="27" height="32"></td>
+	</tr>
+	
+	<tr>
+	  
+		<td background="/logon_ui_resources/layout/lf_sl.png"></td>
+		
+		<td width="100%">		
+		
+      <table id="tblInnerCnt" dir="ltr" cellpadding="0" cellspacing="0">
+    
+				<tr>					
+					<td valign="top"><div class="urBrandImage"><img src="/logon_ui_resources/layout/branding-image.jpg" alt="Branding Image" border="0"></div></td>
+					<td width="100%"></td>
+					<td>					
+					 <table height="360px" cellPadding="0" cellSpacing="0">					
+							<tr>								
+								<td valign="top"><div class="urProductName"><img src="/logon_ui_resources/layout/branding-text.gif" alt="" border="0"></div></td>
+							</tr>							
+							<tr>
+								<td valign="top" align="left">							
+										<div class="urLogonData">										
+											<!-- data table starts after this line -->
+											<FORM  AUTOCOMPLETE="off"  id="logonForm" name="logonForm" target="logonAppPage" method="post" action="j_security_check" >
+<input name="no_cert_storing" type="hidden" value="on"><input type="hidden" name="j_salt" value="Jx62moxL3gFikUTe8flu/TONEKQ=" />
+
+											
+											<table class="urLogonTable" cellSpacing="3px" cellPadding="0" valign="top">																									
+												<tr><td colspan="3">
+													<div class="urMessageArea">
+														<!--	Federation Error Message				-->
+																												
+														
+															<!-- display error message if there is one -->
+															<div class="urMsgBarErr">
+																<span class="urMsgBarImgError"><img height="12" width="12" src="/logon_ui_resources/css/common/1x1.gif"></span><span class="urTxtMsg" tabindex="0">User authentication failed</span>
+															</div>
+																												
+													</div>
+												</td></tr>												
+																
+												<!-- userid -->
+												<tr><td>
+													<label class="urLblStdNew"><nobr>User<span class=urLblReq>&nbsp;*</span></nobr></label>
+
+												</td>
+												<td>
+													<input type="text" id="logonuidfield"  name="j_username" value="KUZNETSOVIN1" title="User * - User authentication failed" class="urEdfTxtEnbl" style="width:170px">
+												</td>
+												<td width="100%">&nbsp;</td></tr>
+												<!-- password -->
+												<tr><td>
+													<label class="urLblStdNew" for="logonpassfield"><nobr>Password<span class=urLblReq>&nbsp;*</span></nobr></label>
+
+												</td>
+												<td>
+													<input type="password" id="logonpassfield"  name="j_password" class="urEdfTxtEnbl" style="width:170px">
+												</td>
+												<td>&nbsp;</td></tr>
+												<!-- create certificate -->
+												
+												<!-- Federate User checkbox -->
+												
+												<tr><td width="100%" colspan="3">&nbsp;</td></tr>
+												<tr><td>&nbsp;																											
+												</td><td align="right">	
+													<!-- logon button -->
+													<input class="urBtnStdNew" type="submit" name="uidPasswordLogon" value="Log On" >
+
+													
+												</td>
+												<td>&nbsp;</td></tr>												
+												<!-- link to certificate logon -->
+												
+												<!-- logon help -->
+												
+											</table>
+											</form>
+
+										<!-- data table ends before this line -->
+										</div>																	
+								</td>
+							</tr>
+							<tr>
+								<td valign="bottom">									
+									<div class="urCopyrightFrame">									 
+										<div class="urCopyrightText">Copyright &copy; SAP AG. All Rights Reserved.</div>					
+										<div class="urCopyrightImage"><img src="/logon_ui_resources/layout/sap_logo.png" alt="SAP AG" title="SAP AG" width="55" height="27"></div>
+									</div>				
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>			
+		</td>		
+		
+		<td background="/logon_ui_resources/layout/lf_sr.png"></td>
+		
+	</tr>
+	
+	<tr>
+		<td><img src="/logon_ui_resources/layout/lf_bl.png" width="29" height="32"></td>
+		<td align="center" background="/logon_ui_resources/layout/lf_sb.png"><span class="clip"><img src="/logon_ui_resources/layout/lf_clip.png" width="298" height="32"></span></td>
+		<td><img src="/logon_ui_resources/layout/lf_br.png" width="27" height="32"></td>
+	</tr>
+	
+</table>
+ 
+
+<script type="text/javascript">
+<!--		
+  var docDir = document.dir;    
+  if(docDir=="rtl" || docDir=="RTL"){   
+     var elTableCnt = document.getElementById("tblInnerCnt");
+     if(elTableCnt!=undefined){
+       elTableCnt.style.direction="rtl";        
+     }     
+  }  
+  var isFormSubmitted = false;
+  if( document.forms ) {		
+    document.forms[0].onsubmit=function(){
+      if( isFormSubmitted ) {
+        return false;
+      } else {
+        isFormSubmitted = true;
+        return true;
+      }
+    }
+  }      
+-->
+</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:SAPJEEDSRExt">
+  <soapenv:Header/>
+  <soapenv:Body>
+    <urn:readDsrRecords><!--http://10.1.1.1:50000/tc~je~dsr~ws~web/SAPJEEDSRExt_Service -->
+      <jeeInstanceId>1281522</jeeInstanceId>
+      <startTime>1412683330959</startTime>
+      <endTime>99999999999999</endTime>
+      <fc>
+        <action>Appl: /rep/mappingtestservice/int</action>
+        <!--Optional:->
+          <actionType>?</actionType>
+          <connCounter>?</connCounter>
+          <connId>?</connId>
+          <cpuTimeMax>?</cpuTimeMax>
+          <cpuTimeMin>?</cpuTimeMin>
+          <dbTimeMax>?</dbTimeMax>
+          <dbTimeMin>?</dbTimeMin>
+          <extCallTimeMax>?</extCallTimeMax>
+          <extCallTimeMin>?</extCallTimeMin>
+          <extSystem>?</extSystem>
+          <extTimeMax>?</extTimeMax>
+          <extTimeMin>?</extTimeMin>
+          <extType>?</extType>
+          <respTimeMax>?</respTimeMax>
+          <respTimeMin>?</respTimeMin>
+          <rootId>?</rootId>
+          <serviceType>?</serviceType>
+          <transId>?</transId>
+          <transIds>?</transIds>
+          <user>?</user-->
+      </fc>
+      <maxRecords>1000</maxRecords>
+    </urn:readDsrRecords>
+  </soapenv:Body>
+</soapenv:Envelope>

@@ -1,0 +1,58 @@
+<testExecutionRequest>
+  <ref>
+    <vc swcGuid="350463403cd811e480aee2050a070a13" vcType="S"/>
+    <key typeID="XI_TRAFO">
+      <elem>M001_XiPerson__XiPerson</elem>
+      <elem>urn:xi-study:000</elem>
+    </key>
+  </ref>
+  <testData>
+    <inputXml><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+  <ns0:XiPerson xmlns:ns0="urn:xi-study:000">
+ <Person>
+  <Id>3333</Id>
+  <LastName>2</LastName>
+  <FirstName>1</FirstName>
+  <TelephoneNumber/>
+  <CountryCode/>
+ </Person>
+</ns0:XiPerson>
+]]></inputXml>
+    <parameters>
+      <testParameterInfo>
+        <HeaderParameters>
+          <properties>
+            <property name="TimeSent"></property>
+            <property name="SenderSystem">Test_SenderSystem</property>
+            <property name="InterfaceNamespace"></property>
+            <property name="SenderParty"></property>
+            <property name="Interface"></property>
+            <property name="SenderPartyScheme"></property>
+            <property name="ReceiverPartyAgency"></property>
+            <property name="RefToMessageId"></property>
+            <property name="ReceiverPartyScheme"></property>
+            <property name="SenderName"></property>
+            <property name="Profiling"></property>
+            <property name="MessageId"></property>
+            <property name="VersionMajor"></property>
+            <property name="ReceiverName"></property>
+            <property name="ReceiverParty"></property>
+            <property name="ProcessingMode"></property>
+            <property name="SenderService"></property>
+            <property name="ReceiverNamespace"></property>
+            <property name="ConversationId"></property>
+            <property name="VersionMinor"></property>
+            <property name="ReceiverService"></property>
+            <property name="SenderNamespace"></property>
+            <property name="ReceiverSystem"></property>
+            <property name="SenderPartyAgency"></property>
+          </properties>
+        </HeaderParameters>
+        <ImportingParameters>
+          <properties/>
+        </ImportingParameters>
+      </testParameterInfo>
+    </parameters>
+    <traceLevel>5</traceLevel>
+  </testData>
+</testExecutionRequest>

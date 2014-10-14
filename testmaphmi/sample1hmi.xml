@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<instance typeid="com.sap.aii.util.hmi.core.msg.HmiRequest">
+<attribute isleave="true" leave_typeid="string" name="ClientId"><value index="0" isnull="false">7391d8f1504611e497a1e8ce0a074978</value></attribute>
+<attribute isleave="true" leave_typeid="string" name="ClientLanguage"><value index="0" isnull="false">EN</value></attribute>
+<attribute isleave="false" name="ClientLevel"><value index="0" isnull="false"><instance typeid="com.sap.aii.util.applcomp.ApplCompLevel">
+    <attribute isleave="true" leave_typeid="string" name="Release"><value index="0" isnull="false">7.31</value></attribute>
+    <attribute isleave="true" leave_typeid="string" name="SupportPackage"><value index="0" isnull="false">*</value></attribute></instance></value></attribute>
+<attribute isleave="true" leave_typeid="string" name="ClientPassword"><value index="0" isnull="false">dummy</value></attribute>
+<attribute isleave="true" leave_typeid="string" name="ClientUser"><value index="0" isnull="false">KuznetsovIN</value></attribute>
+<attribute isleave="true" leave_typeid="string" name="ControlFlag"><value index="0" isnull="false">0</value></attribute>
+<attribute isleave="true" leave_typeid="string" name="HmiSpecVersion"><value index="0" isnull="false">1.0</value></attribute>
+<attribute isleave="true" leave_typeid="string" name="MethodId"><value index="0" isnull="false">executemappingmethod</value></attribute>
+<attribute isleave="false" name="MethodInput"><value index="0" isnull="false"><instance typeid="com.sap.aii.util.hmi.api.HmiMethodInput"><attribute isleave="false" name="Parameters"><value index="0" isnull="false">
+<instance typeid="com.sap.aii.util.hmi.core.gdi2.EntryStringString">
+<attribute isleave="true" leave_typeid="string" name="Key"><value index="0" isnull="false">body</value></attribute>
+<attribute isleave="true" leave_typeid="string" name="Value"><value index="0" isnull="false">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+  &lt;testExecutionRequest&gt;
+  &lt;ref&gt;
+  &lt;vc swcGuid=&quot;350463403cd811e480aee2050a070a13&quot; vcType=&quot;S&quot;/&gt;
+  &lt;key typeID=&quot;XI_TRAFO&quot;&gt;
+  &lt;elem&gt;M001_XiPerson__XiPerson&lt;/elem&gt;
+  &lt;elem&gt;urn:xi-study:000&lt;/elem&gt;
+  &lt;/key&gt;
+  &lt;/ref&gt;
+  &lt;testData&gt;
+  &lt;inputXml&gt;&lt;![CDATA[&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+  &lt;ns0:XiPerson xmlns:ns0=&quot;urn:xi-study:000&quot;&gt;
+  &lt;Person&gt;
+  &lt;Id&gt;3333&lt;/Id&gt;
+  &lt;LastName&gt;2&lt;/LastName&gt;
+  &lt;FirstName&gt;1&lt;/FirstName&gt;
+  &lt;TelephoneNumber/&gt;
+  &lt;CountryCode/&gt;
+  &lt;/Person&gt;
+  &lt;/ns0:XiPerson&gt;
+  ]]&gt;&lt;/inputXml&gt;
+  &lt;parameters&gt;
+  &lt;testParameterInfo&gt;
+  &lt;HeaderParameters&gt;
+  &lt;properties&gt;
+  &lt;property name=&quot;TimeSent&quot;&gt;&lt;/property&gt;
+  &lt;property name=&quot;SenderSystem&quot;&gt;Test_SenderSystem&lt;/property&gt;
+  &lt;property name=&quot;InterfaceNamespace&quot;&gt;&lt;/property&gt;
+  &lt;property name=&quot;SenderParty&quot;&gt;&lt;/property&gt;
+  &lt;property name=&quot;Interface&quot;&gt;&lt;/property&gt;
+  &lt;property name=&quot;SenderPartyScheme&quot;&gt;&lt;/property&gt;
+  &lt;property name=&quot;ReceiverPartyAgency&quot;&gt;&lt;/property&gt;
+  &lt;property name=&quot;RefToMessageId&quot;&gt;&lt;/property&gt;
+  &lt;property name=&quot;ReceiverPartyScheme&quot;&gt;&lt;/property&gt;
+  &lt;property name=&quot;SenderName&quot;&gt;&lt;/property&gt;
+  &lt;property name=&quot;Profiling&quot;&gt;&lt;/property&gt;
+  &lt;property name=&quot;MessageId&quot;&gt;&lt;/property&gt;
+  &lt;property name=&quot;VersionMajor&quot;&gt;&lt;/property&gt;
+  &lt;property name=&quot;ReceiverName&quot;&gt;&lt;/property&gt;
+  &lt;property name=&quot;ReceiverParty&quot;&gt;&lt;/property&gt;
+  &lt;property name=&quot;ProcessingMode&quot;&gt;&lt;/property&gt;
+  &lt;property name=&quot;SenderService&quot;&gt;&lt;/property&gt;
+  &lt;property name=&quot;ReceiverNamespace&quot;&gt;&lt;/property&gt;
+  &lt;property name=&quot;ConversationId&quot;&gt;&lt;/property&gt;
+  &lt;property name=&quot;VersionMinor&quot;&gt;&lt;/property&gt;
+  &lt;property name=&quot;ReceiverService&quot;&gt;&lt;/property&gt;
+  &lt;property name=&quot;SenderNamespace&quot;&gt;&lt;/property&gt;
+  &lt;property name=&quot;ReceiverSystem&quot;&gt;&lt;/property&gt;
+  &lt;property name=&quot;SenderPartyAgency&quot;&gt;&lt;/property&gt;
+  &lt;/properties&gt;
+  &lt;/HeaderParameters&gt;
+  &lt;ImportingParameters&gt;
+  &lt;properties/&gt;
+  &lt;/ImportingParameters&gt;
+  &lt;/testParameterInfo&gt;
+  &lt;/parameters&gt;
+  &lt;traceLevel&gt;5&lt;/traceLevel&gt;
+  &lt;/testData&gt;
+  &lt;/testExecutionRequest&gt;
+</value></attribute></instance></value></attribute></instance></value></attribute><attribute isleave="true" leave_typeid="string" name="RequestId"><value index="0" isnull="false">7391d8f2504611e4c96de8ce0a074978</value></attribute><attribute isleave="true" leave_typeid="string" name="RequiresSession"><value index="0" isnull="false">true</value></attribute><attribute isleave="true" leave_typeid="string" name="ServerApplicationId"><value index="0" isnull="false">2systemType</value></attribute><attribute isleave="true" leave_typeid="string" name="ServerLogicalSystemName"><value index="0" isnull="false">ZZ_BNN</value></attribute><attribute isleave="true" leave_typeid="string" name="ServiceId"><value index="0" isnull="false">mappingtestservice</value></attribute></instance>
+POST /rep/mappingtestservice/int?container=ejb HTTP/1.1
+Authorization: Basic S3V6bmV0c292SU46WHRjbm0hMzE=
+Content-Type: text/xml; charset=UTF-8
+User-Agent: Java/1.7.0_25
+Host: localhost:8888
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+Content-Length: 5847
+
+<?xml version="1.0" encoding="UTF-8" ?>
+<instance typeid="com.sap.aii.util.hmi.core.msg.HmiRequest"><attribute isleave="true" leave_typeid="string" name="ClientId"><value index="0" isnull="false">7390435f504611e495cde8ce0a074978</value></attribute><attribute isleave="true" leave_typeid="string" name="ClientLanguage"><value index="0" isnull="false">EN</value></attribute><attribute isleave="false" name="ClientLevel"><value index="0" isnull="false"><instance typeid="com.sap.aii.util.applcomp.ApplCompLevel"><attribute isleave="true" leave_typeid="string" name="Release"><value index="0" isnull="false">7.31</value></attribute><attribute isleave="true" leave_typeid="string" name="SupportPackage"><value index="0" isnull="false">*</value></attribute></instance></value></attribute><attribute isleave="true" leave_typeid="string" name="ClientPassword"><value index="0" isnull="false">dummy</value></attribute><attribute isleave="true" leave_typeid="string" name="ClientUser"><value index="0" isnull="false">KuznetsovIN</value></attribute><attribute isleave="true" leave_typeid="string" name="ControlFlag"><value index="0" isnull="false">0</value></attribute><attribute isleave="true" leave_typeid="string" name="HmiSpecVersion"><value index="0" isnull="false">1.0</value></attribute><attribute isleave="true" leave_typeid="string" name="MethodId"><value index="0" isnull="false">executemappingmethod</value></attribute><attribute isleave="false" name="MethodInput"><value index="0" isnull="false"><instance typeid="com.sap.aii.util.hmi.api.HmiMethodInput"><attribute isleave="false" name="Parameters"><value index="0" isnull="false"><instance typeid="com.sap.aii.util.hmi.core.gdi2.EntryStringString"><attribute isleave="true" leave_typeid="string" name="Key"><value index="0" isnull="false">body</value></attribute><attribute isleave="true" leave_typeid="string" name="Value"><value index="0" isnull="false">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+  &lt;testExecutionRequest&gt;
+  &lt;ref&gt;
+  &lt;vc swcGuid=&quot;350463403cd811e480aee2050a070a13&quot; vcType=&quot;S&quot;/&gt;
+  &lt;key typeID=&quot;XI_TRAFO&quot;&gt;
+  &lt;elem&gt;M001_XiPerson__XiPerson&lt;/elem&gt;
+  &lt;elem&gt;urn:xi-study:000&lt;/elem&gt;
+  &lt;/key&gt;
+  &lt;/ref&gt;
+  &lt;testData&gt;
+  &lt;inputXml&gt;&lt;![CDATA[&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+  &lt;ns0:XiPerson xmlns:ns0=&quot;urn:xi-study:000&quot;&gt;
+  &lt;Person&gt;
+  &lt;Id&gt;3333&lt;/Id&gt;
+  &lt;LastName&gt;2&lt;/LastName&gt;
+  &lt;FirstName&gt;1&lt;/FirstName&gt;
+  &lt;TelephoneNumber/&gt;
+  &lt;CountryCode/&gt;
+  &lt;/Person&gt;
+  &lt;/ns0:XiPerson&gt;
+  ]]&gt;&lt;/inputXml&gt;
+  &lt;parameters&gt;
+  &lt;testParameterInfo&gt;
+  &lt;HeaderParameters&gt;
+  &lt;properties&gt;
+  &lt;property name=&quot;TimeSent&quot;&gt;&lt;/property&gt;
+  &lt;property name=&quot;SenderSystem&quot;&gt;Test_SenderSystem&lt;/property&gt;
+  &lt;property name=&quot;InterfaceNamespace&quot;&gt;&lt;/property&gt;
+  &lt;property name=&quot;SenderParty&quot;&gt;&lt;/property&gt;
+  &lt;property name=&quot;Interface&quot;&gt;&lt;/property&gt;
+  &lt;property name=&quot;SenderPartyScheme&quot;&gt;&lt;/property&gt;
+  &lt;property name=&quot;ReceiverPartyAgency&quot;&gt;&lt;/property&gt;
+  &lt;property name=&quot;RefToMessageId&quot;&gt;&lt;/property&gt;
+  &lt;property name=&quot;ReceiverPartyScheme&quot;&gt;&lt;/property&gt;
+  &lt;property name=&quot;SenderName&quot;&gt;&lt;/property&gt;
+  &lt;property name=&quot;Profiling&quot;&gt;&lt;/property&gt;
+  &lt;property name=&quot;MessageId&quot;&gt;&lt;/property&gt;
+  &lt;property name=&quot;VersionMajor&quot;&gt;&lt;/property&gt;
+  &lt;property name=&quot;ReceiverName&quot;&gt;&lt;/property&gt;
+  &lt;property name=&quot;ReceiverParty&quot;&gt;&lt;/property&gt;
+  &lt;property name=&quot;ProcessingMode&quot;&gt;&lt;/property&gt;
+  &lt;property name=&quot;SenderService&quot;&gt;&lt;/property&gt;
+  &lt;property name=&quot;ReceiverNamespace&quot;&gt;&lt;/property&gt;
+  &lt;property name=&quot;ConversationId&quot;&gt;&lt;/property&gt;
+  &lt;property name=&quot;VersionMinor&quot;&gt;&lt;/property&gt;
+  &lt;property name=&quot;ReceiverService&quot;&gt;&lt;/property&gt;
+  &lt;property name=&quot;SenderNamespace&quot;&gt;&lt;/property&gt;
+  &lt;property name=&quot;ReceiverSystem&quot;&gt;&lt;/property&gt;
+  &lt;property name=&quot;SenderPartyAgency&quot;&gt;&lt;/property&gt;
+  &lt;/properties&gt;
+  &lt;/HeaderParameters&gt;
+  &lt;ImportingParameters&gt;
+  &lt;properties/&gt;
+  &lt;/ImportingParameters&gt;
+  &lt;/testParameterInfo&gt;
+  &lt;/parameters&gt;
+  &lt;traceLevel&gt;5&lt;/traceLevel&gt;
+  &lt;/testData&gt;
+  &lt;/testExecutionRequest&gt;
+</value></attribute></instance></value></attribute></instance></value></attribute><attribute isleave="true" leave_typeid="string" name="RequestId"><value index="0" isnull="false">7444514b504611e4a80ae8ce0a074978</value></attribute><attribute isleave="true" leave_typeid="string" name="RequiresSession"><value index="0" isnull="false">false</value></attribute><attribute isleave="true" leave_typeid="string" name="ServerApplicationId"><value index="0" isnull="false">2systemType</value></attribute><attribute isleave="true" leave_typeid="string" name="ServerLogicalSystemName"><value index="0" isnull="false">ZZ_BNN</value></attribute><attribute isleave="true" leave_typeid="string" name="ServiceId"><value index="0" isnull="false">mappingtestservice</value></attribute></instance>

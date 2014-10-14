@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <testExecutionRequest>
   <ref>
     <vc swcGuid="350463403cd811e480aee2050a070a13" vcType="S"/>
@@ -53,6 +54,6 @@
         </ImportingParameters>
       </testParameterInfo>
     </parameters>
-    <traceLevel>5</traceLevel>
+    <traceLevel>6</traceLevel>
   </testData>
 </testExecutionRequest>

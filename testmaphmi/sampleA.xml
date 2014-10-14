@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?><ns0:XiPerson xmlns:ns0="urn:xi-study:000">
+ <Person>
+  <Id>3333</Id>
+  <LastName>2</LastName>
+  <FirstName>1</FirstName>
+  <TelephoneNumber/>
+  <CountryCode/>
+ </Person>
+</ns0:XiPerson>
